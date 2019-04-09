@@ -36,6 +36,12 @@ query () {
 }
 
 for symbol in $(IFS=' '; echo "${SYMBOLS[*]}"); do
+
+  if [ $symbol == 0 ]; then
+    printf "\n"
+    continue
+  fi
+
   marketState="$(query $symbol 'marketState')"
 
   if [ -z $marketState ]; then
